@@ -38,32 +38,98 @@
 
 //////////////////////////////////// QUICK SORT //////////////////////////////////
 void QuickSortTime(int array[], int size, string label) {
-
+    cout << "\n| Processando " << "0%";
     auto t1 = high_resolution_clock::now();
+    cout << "\r| Processando " << "25%";
         quickSort(array, 0, size - 1);
     auto t2 = high_resolution_clock::now();
+    cout << "\r| Processando " << "75%";
 
     auto ms_int = duration_cast<microseconds>(t2 - t1);
 
-    cout << "\n| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
+    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
     
 }
 
 //////////////////////////////////// BUBBLE SORT //////////////////////////////////
 void BubbleSortTime(int array[], int size, string label) {
+    cout << "\n| Processando " << "0%";
 
     auto t1 = high_resolution_clock::now();
+    cout << "\r| Processando " << "25%";
         bubbleSort(array, size - 1);
     auto t2 = high_resolution_clock::now();
+    cout << "\r| Processando " << "75%";
 
     auto ms_int = duration_cast<microseconds>(t2 - t1);
 
-    cout << "\n| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
+    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
     
 }
 
+//////////////////////////////////// HEAP SORT ////////////////////////////////////
+void HeapSortTime(int array[], int size, string label) {
+    cout << "\n| Processando " << "0%";
 
+    auto t1 = high_resolution_clock::now();
+    cout << "\r| Processando " << "25%";
+        heapSort(array, size - 1);
+    auto t2 = high_resolution_clock::now();
+    cout << "\r| Processando " << "75%";
 
+    auto ms_int = duration_cast<microseconds>(t2 - t1);
+
+    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
+    
+}
+
+//////////////////////////////////// INSERTION SORT ///////////////////////////////
+void InsertionSortTime(int array[], int size, string label) {
+    cout << "\n| Processando " << "0%";
+
+    auto t1 = high_resolution_clock::now();
+    cout << "\r| Processando " << "25%";
+        insertionSort(array, size - 1);
+    auto t2 = high_resolution_clock::now();
+    cout << "\r| Processando " << "75%";
+
+    auto ms_int = duration_cast<microseconds>(t2 - t1);
+
+    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
+    
+}
+
+//////////////////////////////////// MERGE SORT ///////////////////////////////////
+void MergeSortTime(int array[], int size, string label) {
+    cout << "\n| Processando " << "0%";
+
+    auto t1 = high_resolution_clock::now();
+    cout << "\r| Processando " << "25%";
+        mergeSort(array, 0, size - 1);
+    auto t2 = high_resolution_clock::now();
+    cout << "\r| Processando " << "75%";
+
+    auto ms_int = duration_cast<microseconds>(t2 - t1);
+
+    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
+    
+}
+
+//////////////////////////////////// SELECTION SORT ///////////////////////////////////
+void SelectionSortTime(int array[], int size, string label) {
+    cout << "\n| Processando " << "0%";
+
+    auto t1 = high_resolution_clock::now();
+    cout << "\r| Processando " << "25%";
+        selectionSort(array, size - 1);
+    auto t2 = high_resolution_clock::now();
+    cout << "\r| Processando " << "75%";
+
+    auto ms_int = duration_cast<microseconds>(t2 - t1);
+
+    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
+    
+}
 
 int main() {
 
@@ -124,57 +190,35 @@ int main() {
     QuickSortTime(arrmin, sizemin, "inversamente ordenados -> ");
     QuickSortTime(arrless, sizeless, "quase ordenados -> ");
 
+    cout << "\n|\n| ====================== INICIO DAS COMPARACOES BUBBLE SORT ======================\n|";
+    BubbleSortTime(arrmax, sizemax, "aleatorio -> ");
+    BubbleSortTime(arrmed, sizemed, "ordenados -> ");
+    BubbleSortTime(arrmin, sizemin, "inversamente ordenados -> ");
+    BubbleSortTime(arrless, sizeless, "quase ordenados -> ");
 
+    cout << "\n|\n| ====================== INICIO DAS COMPARACOES HEAP SORT ======================\n|";
+    HeapSortTime(arrmax, sizemax, "aleatorio -> ");
+    HeapSortTime(arrmed, sizemed, "ordenados -> ");
+    HeapSortTime(arrmin, sizemin, "inversamente ordenados -> ");
+    HeapSortTime(arrless, sizeless, "quase ordenados -> ");
 
+    cout << "\n|\n| ====================== INICIO DAS COMPARACOES INSERTION SORT ======================\n|";
+    InsertionSortTime(arrmax, sizemax, "aleatorio -> ");
+    InsertionSortTime(arrmed, sizemed, "ordenados -> ");
+    InsertionSortTime(arrmin, sizemin, "inversamente ordenados -> ");
+    InsertionSortTime(arrless, sizeless, "quase ordenados -> ");
  
+    cout << "\n|\n| ====================== INICIO DAS COMPARACOES MERGE SORT ======================\n|";
+    MergeSortTime(arrmax, sizemax, "aleatorio -> ");
+    MergeSortTime(arrmed, sizemed, "ordenados -> ");
+    MergeSortTime(arrmin, sizemin, "inversamente ordenados -> ");
+    MergeSortTime(arrless, sizeless, "quase ordenados -> ");
 
-
-
-
-
-
-
-
-
-//////////////////////////////////// HEAP SORT ////////////////////////////////////
-
-
-
-
-
-
-
-//////////////////////////////////// INSERTION SORT ///////////////////////////////
-
-
-
-
-//////////////////////////////////// MERGE SORT ///////////////////////////////////
-
-
-
-
-       
-//////////////////////////////////// SELECTION SORT ///////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    cout << "\n|\n| ====================== INICIO DAS COMPARACOES SELECTION SORT ======================\n|";
+    SelectionSortTime(arrmax, sizemax, "aleatorio -> ");
+    SelectionSortTime(arrmed, sizemed, "ordenados -> ");
+    SelectionSortTime(arrmin, sizemin, "inversamente ordenados -> ");
+    SelectionSortTime(arrless, sizeless, "quase ordenados -> ");
 
 
 
