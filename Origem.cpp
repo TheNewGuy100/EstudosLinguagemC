@@ -10,7 +10,7 @@
     #include <chrono>
 
 // std::cout, std::cin
-    using namespace std;    
+    using namespace std;
     using namespace std::chrono_literals;
     using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
@@ -28,107 +28,16 @@
     #include "bibliotecas/logo.h"
     #include "Bibliotecas/fila.h"
     #include "bibliotecas/lista.c"
-    #include "bibliotecas/sort/bubbleSort.h"
-    #include "bibliotecas/sort/selectionSort.h"
-    #include "bibliotecas/sort/heapSort.h"
-    #include "bibliotecas/sort/mergeSort.h"
-    #include "bibliotecas/sort/insertionSort.h"
-    #include "bibliotecas/sort/quickSort.h"
+    #include "bibliotecas/functions/functionsController.h"
 
-
-//////////////////////////////////// QUICK SORT //////////////////////////////////
-void QuickSortTime(int array[], int size, string label) {
-    cout << "\n| Processando " << "0%";
-    auto t1 = high_resolution_clock::now();
-    cout << "\r| Processando " << "25%";
-        quickSort(array, 0, size - 1);
-    auto t2 = high_resolution_clock::now();
-    cout << "\r| Processando " << "75%";
-
-    auto ms_int = duration_cast<microseconds>(t2 - t1);
-
-    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
-    
-}
-
-//////////////////////////////////// BUBBLE SORT //////////////////////////////////
-void BubbleSortTime(int array[], int size, string label) {
-    cout << "\n| Processando " << "0%";
-
-    auto t1 = high_resolution_clock::now();
-    cout << "\r| Processando " << "25%";
-        bubbleSort(array, size - 1);
-    auto t2 = high_resolution_clock::now();
-    cout << "\r| Processando " << "75%";
-
-    auto ms_int = duration_cast<microseconds>(t2 - t1);
-
-    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
-    
-}
-
-//////////////////////////////////// HEAP SORT ////////////////////////////////////
-void HeapSortTime(int array[], int size, string label) {
-    cout << "\n| Processando " << "0%";
-
-    auto t1 = high_resolution_clock::now();
-    cout << "\r| Processando " << "25%";
-        heapSort(array, size - 1);
-    auto t2 = high_resolution_clock::now();
-    cout << "\r| Processando " << "75%";
-
-    auto ms_int = duration_cast<microseconds>(t2 - t1);
-
-    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
-    
-}
-
-//////////////////////////////////// INSERTION SORT ///////////////////////////////
-void InsertionSortTime(int array[], int size, string label) {
-    cout << "\n| Processando " << "0%";
-
-    auto t1 = high_resolution_clock::now();
-    cout << "\r| Processando " << "25%";
-        insertionSort(array, size - 1);
-    auto t2 = high_resolution_clock::now();
-    cout << "\r| Processando " << "75%";
-
-    auto ms_int = duration_cast<microseconds>(t2 - t1);
-
-    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
-    
-}
-
-//////////////////////////////////// MERGE SORT ///////////////////////////////////
-void MergeSortTime(int array[], int size, string label) {
-    cout << "\n| Processando " << "0%";
-
-    auto t1 = high_resolution_clock::now();
-    cout << "\r| Processando " << "25%";
-        mergeSort(array, 0, size - 1);
-    auto t2 = high_resolution_clock::now();
-    cout << "\r| Processando " << "75%";
-
-    auto ms_int = duration_cast<microseconds>(t2 - t1);
-
-    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
-    
-}
-
-//////////////////////////////////// SELECTION SORT ///////////////////////////////////
-void SelectionSortTime(int array[], int size, string label) {
-    cout << "\n| Processando " << "0%";
-
-    auto t1 = high_resolution_clock::now();
-    cout << "\r| Processando " << "25%";
-        selectionSort(array, size - 1);
-    auto t2 = high_resolution_clock::now();
-    cout << "\r| Processando " << "75%";
-
-    auto ms_int = duration_cast<microseconds>(t2 - t1);
-
-    cout << "\r| Tempo de execucao para " << size << " elementos em estilo " << label << ms_int.count() <<  " microseconds";
-    
+void systemMessage() {
+    cout << "\n|\n| Bem-vindo, escolha a opcao que deseja proseguir:";
+    cout << "\n|";
+    cout << "\n| [3] -> Sorting Battle Royale (quem processa mais rapido)";
+    cout << "\n| [2] -> detalhes sobre os arrays utilizados, e como foram feitos";
+    cout << "\n| [1] -> verificar todas as operacoes e seus tempos com tabelas programadas";
+    cout << "\n| [0] -> sair do projeto\n| ";
+    cout << "\n| ";
 }
 
 int main() {
@@ -140,8 +49,8 @@ int main() {
     srand(time(NULL));
 
 	// MAIN
-    int arrmax[MAX], arrmed[MED], arrmin[MIN], arrless[LESS];
-    
+    int arrmax[MAX], arrmed[MED], arrmin[MIN], arrless[LESS], response;
+
     int sizemax = sizeof(arrmax)/sizeof(arrmax[0]);
     int sizemed = sizeof(arrmed)/sizeof(arrmed[0]);
     int sizemin = sizeof(arrmin)/sizeof(arrmin[0]);
@@ -149,7 +58,7 @@ int main() {
 
     int helper = sizemin, TenHelper = 0;
     
-    cout << "\n| ORGANIZANDO 100000 VARIAVEIS PARA O PROCESSO\n|";
+    cout << "\n| ORGANIZANDO TODAS AS VARIAVEIS PARA OS PROCESSOS, AGUARDE...\n|";
     for (int i = 0; i < MAX ; i++) {
         
         // ALEATÓRIO
@@ -184,44 +93,91 @@ int main() {
         cout << "\r| Trabalhando na randomizacao: " << i/1000 << " / 100 %", i;
     }
 
-    cout << "\n|\n| ====================== INICIO DAS COMPARACOES QUICK SORT ======================\n|";
-    QuickSortTime(arrmax, sizemax, "aleatorio -> ");
-    QuickSortTime(arrmed, sizemed, "ordenados -> ");
-    QuickSortTime(arrmin, sizemin, "inversamente ordenados -> ");
-    QuickSortTime(arrless, sizeless, "quase ordenados -> ");
-
-    cout << "\n|\n| ====================== INICIO DAS COMPARACOES BUBBLE SORT ======================\n|";
-    BubbleSortTime(arrmax, sizemax, "aleatorio -> ");
-    BubbleSortTime(arrmed, sizemed, "ordenados -> ");
-    BubbleSortTime(arrmin, sizemin, "inversamente ordenados -> ");
-    BubbleSortTime(arrless, sizeless, "quase ordenados -> ");
-
-    cout << "\n|\n| ====================== INICIO DAS COMPARACOES HEAP SORT ======================\n|";
-    HeapSortTime(arrmax, sizemax, "aleatorio -> ");
-    HeapSortTime(arrmed, sizemed, "ordenados -> ");
-    HeapSortTime(arrmin, sizemin, "inversamente ordenados -> ");
-    HeapSortTime(arrless, sizeless, "quase ordenados -> ");
-
-    cout << "\n|\n| ====================== INICIO DAS COMPARACOES INSERTION SORT ======================\n|";
-    InsertionSortTime(arrmax, sizemax, "aleatorio -> ");
-    InsertionSortTime(arrmed, sizemed, "ordenados -> ");
-    InsertionSortTime(arrmin, sizemin, "inversamente ordenados -> ");
-    InsertionSortTime(arrless, sizeless, "quase ordenados -> ");
- 
-    cout << "\n|\n| ====================== INICIO DAS COMPARACOES MERGE SORT ======================\n|";
-    MergeSortTime(arrmax, sizemax, "aleatorio -> ");
-    MergeSortTime(arrmed, sizemed, "ordenados -> ");
-    MergeSortTime(arrmin, sizemin, "inversamente ordenados -> ");
-    MergeSortTime(arrless, sizeless, "quase ordenados -> ");
-
-    cout << "\n|\n| ====================== INICIO DAS COMPARACOES SELECTION SORT ======================\n|";
-    SelectionSortTime(arrmax, sizemax, "aleatorio -> ");
-    SelectionSortTime(arrmed, sizemed, "ordenados -> ");
-    SelectionSortTime(arrmin, sizemin, "inversamente ordenados -> ");
-    SelectionSortTime(arrless, sizeless, "quase ordenados -> ");
 
 
+    do {
+        systemMessage();
+        cin >> response;
+            switch (response) {
+                case 3:
+                    system("cls");
+                    cout << "\n| BEM-VINDO AO BATTLEGRONDS!";
+                    cout << "\n| As regras sao simples. melhor tempo de 10 tentativas, ganha tudo!";
+                    cout << "\n| espero que esteja com tempo, porque isso vai demorar... ¯\\_(ツ)_/¯";
+                    cout << "\n|";
+                    cout << "\n| Se continuar seu pc pode explodir... continuar?";
+                    cout << "\n| ";
+                    cout << "\n| [1] vai, explode essa porcaria.";
+                    cout << "\n| [0] deixar pra explodir amanha";
+                    cout << "\n| ";
+                    do {
+                        cin >> response;
+                        switch (response) {
+                            case 1:
+                                system("cls");
+                                cout << "\n|";
+                                cout << "\n| vai fazer um cafe que voce ganha mais...\n| ";
+                                cout << "\n|";
+                                
+                                
 
+                            break;
+
+                            case 0: 
+                                system("cls");
+                                break;
+
+                            default:
+                                cout << "\n| nao tem fuga meu chapa..."; break;
+                        }
+                    } while (response != 0);
+                    response = 3;
+                break;
+                
+                case 2:
+                    system("cls");
+                    cout << "\n| DETALHES SOBRE ARRAYS UTILIZADOS:";
+                    cout << "\n| ";
+                    cout << "\n| ARRAY ALEATORIO ->  Utlizado rand com srand(time(NULL), gerando 100.000 numeros aleatorios com ele";
+                    cout << "\n| ARRAY ORDENADO -> Utiliza a numeracao de i em (int i = 0; i < MAX ; i++) para ser gerado";
+                    cout << "\n| ARRAY INVERSAMENTE ORDENADOS -> Utiliza o tamanho do array escolhido e o 'i' para ordenar inversamente";
+                    cout << "\n| ARRAY QUASE ORDENADOS -> Utiliza um metodo para a cada 1 casa decimal, gerar um numero aleatorio";
+                    cout << "\n|";
+                    cout << "\n| ";
+
+                    system("pause");
+                    system("cls");
+                break;
+                
+                case 1:
+                    system("cls");
+                    QuickSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    HeapSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    InsertionSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    MergeSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    BubbleSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    
+                    cout << "\n|\n| RESULTADOS A MOSTRA \n| ";
+                    system("pause");
+                    system("cls");
+                break;
+                
+                default:
+                    system("cls");
+                    if (response != 0) {
+                        cout << "| ESCOLHA UMA OPCAO VALIDA OU SAIA UTILIZANDO A TECLA NUMERICA 0";
+                    }
+                break;
+
+            }
+    } while ( response != 0);
+    
+    
+    
+
+
+
+    cout << "\n";
     system("pause");
     return 200;
 }
