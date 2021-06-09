@@ -29,6 +29,7 @@
     #include "Bibliotecas/fila.h"
     #include "bibliotecas/lista.c"
     #include "bibliotecas/functions/functionsController.h"
+    #include "bibliotecas/globalUnit/GlobalVariables.h"
 
 void systemMessage() {
     cout << "\n|\n| Bem-vindo, escolha a opcao que deseja proseguir:";
@@ -55,10 +56,11 @@ int main() {
     int sizemed = sizeof(arrmed)/sizeof(arrmed[0]);
     int sizemin = sizeof(arrmin)/sizeof(arrmin[0]);
     int sizeless = sizeof(arrless)/sizeof(arrless[0]);
-
     int helper = sizemin, TenHelper = 0;
-    
+
     cout << "\n| ORGANIZANDO TODAS AS VARIAVEIS PARA OS PROCESSOS, AGUARDE...\n|";
+
+
     for (int i = 0; i < MAX ; i++) {
         
         // ALEATÓRIO
@@ -92,8 +94,6 @@ int main() {
 
         cout << "\r| Trabalhando na randomizacao: " << i/1000 << " / 100 %", i;
     }
-
-
 
     do {
         systemMessage();
@@ -152,10 +152,10 @@ int main() {
                 case 1:
                     system("cls");
                     QuickSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    BubbleSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     HeapSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     InsertionSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     MergeSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
-                    BubbleSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     
                     cout << "\n|\n| RESULTADOS A MOSTRA \n| ";
                     system("pause");
@@ -171,11 +171,6 @@ int main() {
 
             }
     } while ( response != 0);
-    
-    
-    
-
-
 
     cout << "\n";
     system("pause");

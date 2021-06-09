@@ -48,6 +48,7 @@
         "chrono": "cpp",
         "stop_token": "cpp",
         "thread": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "lista.c": "cpp"
     }
 }

@@ -8,6 +8,7 @@
 
 //////////////////////////////////// QUICK SORT //////////////////////////////////
 auto QuickSortTime(int array[], int size, string label) {
+
     cout << "\n| Processando " << "0%";
     auto t1 = high_resolution_clock::now();
     cout << "\r| Processando " << "25%";

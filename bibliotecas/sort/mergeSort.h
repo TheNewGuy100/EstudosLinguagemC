@@ -1,5 +1,6 @@
 // C++ program for Merge Sort
 #include <iostream>
+#include "../globalUnit/GlobalVariables.h"
 using namespace std;
  
 // Merges two subarrays of arr[].
@@ -31,7 +32,9 @@ void merge(int arr[], int l, int m, int r)
     int k = l;
  
     while (i < n1 && j < n2) {
+        comp++;
         if (L[i] <= R[j]) {
+            comp++;
             arr[k] = L[i];
             i++;
         }
@@ -45,7 +48,9 @@ void merge(int arr[], int l, int m, int r)
     // Copy the remaining elements of
     // L[], if there are any
     while (i < n1) {
+        comp++;
         arr[k] = L[i];
+        troc++;
         i++;
         k++;
     }
@@ -53,7 +58,9 @@ void merge(int arr[], int l, int m, int r)
     // Copy the remaining elements of
     // R[], if there are any
     while (j < n2) {
+        comp++;
         arr[k] = R[j];
+        troc++;
         j++;
         k++;
     }
@@ -64,6 +71,7 @@ void merge(int arr[], int l, int m, int r)
 // of arr to be sorted */
 void mergeSort(int arr[],int l,int r){
     if(l>=r){
+        comp++;
         return;//returns recursively
     }
     int m =l+ (r-l)/2;

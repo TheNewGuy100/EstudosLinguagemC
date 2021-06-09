@@ -1,9 +1,13 @@
 /* C implementation QuickSort */
-#include<stdio.h>
+#include "../globalUnit/GlobalVariables.h"
+#include <stdio.h>
  
 // A utility function to swap two elements
-void swapQuick(int* a, int* b)
-{
+void swapQuick(int* a, int* b) {
+    // realizando troca
+    troc++;
+    troc++;
+
     int t = *a;
     *a = *b;
     *b = t;
@@ -23,8 +27,8 @@ int partition (int arr[], int low, int high)
     {
         // If current element is smaller than or
         // equal to pivot
-        if (arr[j] <= pivot)
-        {
+        if (arr[j] <= pivot) {
+            comp++;
             i++;    // increment index of smaller element
             swapQuick(&arr[i], &arr[j]);
         }
@@ -39,8 +43,8 @@ int partition (int arr[], int low, int high)
   high  --> Ending index */
 void quickSort(int arr[], int low, int high)
 {
-    if (low < high)
-    {
+    if (low < high) {
+        comp++;
         /* pi is partitioning index, arr[p] is now
            at right place */
         int pi = partition(arr, low, high);
