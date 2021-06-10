@@ -34,7 +34,6 @@
 void systemMessage() {
     cout << "\n|\n| Bem-vindo, escolha a opcao que deseja proseguir:";
     cout << "\n|";
-    cout << "\n| [3] -> Sorting Battle Royale (quem processa mais rapido)";
     cout << "\n| [2] -> detalhes sobre os arrays utilizados, e como foram feitos";
     cout << "\n| [1] -> verificar todas as operacoes e seus tempos com tabelas programadas";
     cout << "\n| [0] -> sair do projeto\n| ";
@@ -99,41 +98,6 @@ int main() {
         systemMessage();
         cin >> response;
             switch (response) {
-                case 3:
-                    system("cls");
-                    cout << "\n| BEM-VINDO AO BATTLEGRONDS!";
-                    cout << "\n| As regras sao simples. melhor tempo de 10 tentativas, ganha tudo!";
-                    cout << "\n| espero que esteja com tempo, porque isso vai demorar... ¯\\_(ツ)_/¯";
-                    cout << "\n|";
-                    cout << "\n| Se continuar seu pc pode explodir... continuar?";
-                    cout << "\n| ";
-                    cout << "\n| [1] vai, explode essa porcaria.";
-                    cout << "\n| [0] deixar pra explodir amanha";
-                    cout << "\n| ";
-                    do {
-                        cin >> response;
-                        switch (response) {
-                            case 1:
-                                system("cls");
-                                cout << "\n|";
-                                cout << "\n| vai fazer um cafe que voce ganha mais...\n| ";
-                                cout << "\n|";
-                                
-                                
-
-                            break;
-
-                            case 0: 
-                                system("cls");
-                                break;
-
-                            default:
-                                cout << "\n| nao tem fuga meu chapa..."; break;
-                        }
-                    } while (response != 0);
-                    response = 3;
-                break;
-                
                 case 2:
                     system("cls");
                     cout << "\n| DETALHES SOBRE ARRAYS UTILIZADOS:";
@@ -156,6 +120,7 @@ int main() {
                     HeapSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     InsertionSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     MergeSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
+                    SelectionSortController(arrmax, arrmed, arrmin, arrless, sizemax, sizemed, sizemin, sizeless);
                     
                     cout << "\n|\n| RESULTADOS A MOSTRA \n| ";
                     system("pause");
